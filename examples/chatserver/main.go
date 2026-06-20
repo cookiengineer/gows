@@ -4,13 +4,14 @@ import "example/chat"
 import "log"
 import "net/http"
 import "os"
+import "strings"
 
 func main() {
 
-	port := os.Getenv("PORT")
+	port := "3000"
 
-	if port == "" {
-		port = "8080"
+	if tmp := os.Getenv("PORT"); tmp != "" {
+		port = strings.TrimSpace(port)
 	}
 
 	chat_server := chat.NewServer()

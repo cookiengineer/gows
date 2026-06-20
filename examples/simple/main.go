@@ -1,6 +1,6 @@
 package main
 
-import gows "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gowebsocket"
 import "log"
 import "os"
 import "time"
@@ -13,9 +13,9 @@ func main() {
 	go func() {
 
 		logger := log.New(os.Stdout, "[server] ", log.LstdFlags)
-		server := &gows.Server{
-			Addr:    ":8080",
-			Handler: func(websocket *gows.WebSocket) {
+		server := &gowebsocket.Server{
+			Addr:    ":3000",
+			Handler: func(websocket *gowebsocket.WebSocket) {
 
 				logger.Print("Client connected!")
 
@@ -42,7 +42,7 @@ func main() {
 		time.Sleep(100 * time.Millisecond)
 
 		logger := log.New(os.Stdout, "[client] ", log.LstdFlags)
-		client, err0 := gows.NewClient("ws://localhost:8080")
+		client, err0 := gowebsocket.NewClient("ws://localhost:3000")
 
 		if err0 == nil {
 
@@ -60,7 +60,7 @@ func main() {
 				client.Socket.Send([]byte("Second Hello, world!"))
 
 				time.Sleep(1 * time.Second)
-				client.Socket.Close(gows.StatusGoingAway, "Goodbye!")
+				client.Socket.Close(gowebsocket.StatusGoingAway, "Goodbye!")
 
 			}
 
@@ -70,6 +70,6 @@ func main() {
 
 	}()
 
-	time.Sleep(10 * time.Second)
+	time.Sleep(3 * time.Second)
 
 }

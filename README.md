@@ -7,8 +7,6 @@ with zero dependencies and with `net/http` compatibility.
 
 ## Usage
 
-Check out the [examples](./examples) folder for further API usage examples.
-
 ### gowebsocket.Client
 
 ```go
@@ -59,6 +57,14 @@ server := &gows.Server{
 
 server.Listen()
 ```
+
+
+## Examples
+
+Check out the [examples](./examples) folder for further API usage examples.
+
+- [chatserver](./examples/chatserver) is a simple chat server.
+- [simple](./examples/simple) is a simple client and server.
 
 
 ## License
