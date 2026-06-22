@@ -76,8 +76,9 @@ server.Listen()
 
 Check out the [examples](./examples) folder for further API usage examples.
 
-- [chatserver](./examples/chatserver) is a simple chat server.
 - [simple](./examples/simple) is a simple client and server.
+- [permessage-deflate](./examples/permessage-deflate) is a client and server that uses a websocket extension.
+- [chatserver](./examples/chatserver) is a fully integrated web chat server.
 
 
 ## License
