@@ -1,4 +1,4 @@
-package gowebsocket
+package gows
 
 import "encoding/binary"
 import "io"

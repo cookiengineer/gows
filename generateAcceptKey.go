@@ -1,4 +1,4 @@
-package gowebsocket
+package gows
 
 import "crypto/sha1"
 import "encoding/base64"

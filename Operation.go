@@ -1,4 +1,4 @@
-package gowebsocket
+package gows
 
 type Operation byte
 

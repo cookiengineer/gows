@@ -1,4 +1,4 @@
-package gowebsocket
+package gows
 
 import "crypto/rand"
 import "encoding/base64"

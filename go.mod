@@ -1,3 +1,3 @@
-module github.com/cookiengineer/gowebsocket
+module github.com/cookiengineer/gows
 
 go 1.26.3

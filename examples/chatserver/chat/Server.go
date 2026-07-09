@@ -1,6 +1,6 @@
 package chat
 
-import "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gows"
 import "example/chat/structs"
 import "fmt"
 import "log"
@@ -11,7 +11,7 @@ import "sync"
 
 type Server struct {
 	Rooms   map[string]*structs.Room
-	Server  *gowebsocket.Server
+	Server  *gows.Server
 	Handler http.Handler
 	mutex   sync.Mutex
 }
@@ -26,7 +26,7 @@ func NewServer() *Server {
 
 		return &Server{
 			Rooms:   make(map[string]*structs.Room),
-			Server:  &gowebsocket.Server{},
+			Server:  &gows.Server{},
 			Handler: http_handler,
 			mutex:   sync.Mutex{},
 		}

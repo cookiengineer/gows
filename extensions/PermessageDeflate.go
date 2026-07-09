@@ -1,13 +1,13 @@
 package extensions
 
-import "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gows"
 import "bytes"
 import "compress/flate"
 import "compress/zlib"
 import "io"
 import "strconv"
 
-var _ gowebsocket.Extension = (*PermessageDeflate)(nil)
+var _ gows.Extension = (*PermessageDeflate)(nil)
 
 // PermessageDeflate implements the "permessage-deflate" WebSocket extension as defined in RFC 7692.
 type PermessageDeflate struct {

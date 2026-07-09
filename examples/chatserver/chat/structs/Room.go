@@ -1,14 +1,14 @@
 package structs
 
-import "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gows"
 import "encoding/json"
 import "strings"
 import "sync"
 
 type Room struct {
-	Name    string                          `json:"name"`
-	Clients map[*gowebsocket.WebSocket]bool `json:"clients"`
-	History []Message                       `json:"history"`
+	Name    string                   `json:"name"`
+	Clients map[*gows.WebSocket]bool `json:"clients"`
+	History []Message                `json:"history"`
 	mutex   sync.Mutex
 }
 
@@ -16,7 +16,7 @@ func NewRoom(name string) *Room {
 
 	return &Room{
 		Name:    strings.ToLower(name),
-		Clients: make(map[*gowebsocket.WebSocket]bool),
+		Clients: make(map[*gows.WebSocket]bool),
 		History: make([]Message, 0),
 		mutex:   sync.Mutex{},
 	}
@@ -32,7 +32,7 @@ func (room *Room) AmountOfClients() int {
 
 }
 
-func (room *Room) Join(client *gowebsocket.WebSocket) {
+func (room *Room) Join(client *gows.WebSocket) {
 
 	room.mutex.Lock()
 
@@ -42,7 +42,7 @@ func (room *Room) Join(client *gowebsocket.WebSocket) {
 
 }
 
-func (room *Room) Leave(client *gowebsocket.WebSocket) {
+func (room *Room) Leave(client *gows.WebSocket) {
 
 	room.mutex.Lock()
 
@@ -52,7 +52,7 @@ func (room *Room) Leave(client *gowebsocket.WebSocket) {
 
 }
 
-func (room *Room) Broadcast(sender *gowebsocket.WebSocket, message Message) {
+func (room *Room) Broadcast(sender *gows.WebSocket, message Message) {
 
 	payload, err0 := json.Marshal(message)
 

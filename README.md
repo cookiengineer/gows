@@ -1,5 +1,5 @@
 
-# gowebsocket
+# gows
 
 Minimal RFC compliant WebSocket Version 13 implementation in Pure Go
 with zero dependencies and with `net/http` compatibility.
@@ -11,15 +11,15 @@ with zero dependencies and with `net/http` compatibility.
 
 ## Usage
 
-### gowebsocket.Client
+### gows.Client
 
 ```go
-import "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gows"
 import "log"
 import "time"
 
 logger := log.New(os.Stdout, "[client] ", log.LstdFlags)
-client, err0 := gowebsocket.NewClient("ws://localhost:8080")
+client, err0 := gows.NewClient("ws://localhost:8080")
 
 if err0 == nil {
 
@@ -31,7 +31,7 @@ if err0 == nil {
         client.Socket.Send([]byte("Hello, world!"))
 
         time.Sleep(1 * time.Second)
-        client.Socket.Close(gowebsocket.StatusGoingAway, "Goodbye!")
+        client.Socket.Close(gows.StatusGoingAway, "Goodbye!")
 
     } else {
         logger.Fatal(err1)
@@ -42,16 +42,16 @@ if err0 == nil {
 }
 ```
 
-### gowebsocket.Server
+### gows.Server
 
 ```go
-import "github.com/cookiengineer/gowebsocket"
+import "github.com/cookiengineer/gows"
 import "log"
 
 logger := log.New(os.Stdout, "[server] ", log.LstdFlags)
-server := &gowebsocket.Server{
+server := &gows.Server{
     Addr:    ":8080",
-    Handler: func(websocket *gowebsocket.WebSocket) {
+    Handler: func(websocket *gows.WebSocket) {
 
         logger.Print("Client connected!")
 
